@@ -25,3 +25,10 @@ tasks.jar {
 
     from(configurations.runtimeClasspath.get().map{ zipTree(it) })
 }
+
+
+tasks.register("addictionRun", JavaExec::class) {
+    dependsOn(tasks.build.name)
+    mainClass = "${project.group}.Main"
+    classpath = sourceSets.main.get().runtimeClasspath
+}
