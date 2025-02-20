@@ -4,14 +4,11 @@ import com.diframework.annotation.Autowired;
 import com.diframework.annotation.Bean;
 import com.diframework.annotation.Configuration;
 import com.diframework.container.BeanContainer;
-import com.diframework.util.ClassScanner;
-
-import java.util.Arrays;
 
 @Configuration
 public class Main {
 
-    @Autowired
+    @Autowired("test")
     private static String value = "a";
 
     public static void main(String[] args) {
@@ -20,8 +17,13 @@ public class Main {
         System.out.println(value);
     }
 
-    @Bean("test")
+    @Bean
     public static String getBean() {
         return "Hello, world!";
+    }
+
+    @Bean("test")
+    public static String getBean2(String value) {
+        return value + "!";
     }
 }

@@ -22,8 +22,13 @@ tasks.jar {
     manifest {
         attributes("Main-Class" to "${project.group}.Main")
     }
+    archiveFileName = "diframework.jar"
 
-    from(configurations.runtimeClasspath.get().map{ zipTree(it) })
+    from(configurations.runtimeClasspath.get().filter {
+        it.extension == "jar"
+    }.map {
+        zipTree(it)
+    })
 }
 
 

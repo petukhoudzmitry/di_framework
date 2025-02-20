@@ -1,5 +1,7 @@
 package com.diframework.util;
 
+import java.util.Objects;
+
 public class Pair<K, V> {
     private final K key;
     private final V value;
@@ -28,5 +30,10 @@ public class Pair<K, V> {
         }
         Pair<?, ?> pair = (Pair<?, ?>) obj;
         return key.equals(pair.key) && value.equals(pair.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(key, value);
     }
 }
