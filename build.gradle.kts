@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
 group = "com.diframework"
@@ -36,4 +37,12 @@ tasks.register("addictionRun", JavaExec::class) {
     dependsOn(tasks.build.name)
     mainClass = "${project.group}.Main"
     classpath = sourceSets.main.get().runtimeClasspath
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
 }
