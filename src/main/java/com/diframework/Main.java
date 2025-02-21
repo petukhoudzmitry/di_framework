@@ -3,9 +3,11 @@ package com.diframework;
 import com.diframework.annotation.Autowired;
 import com.diframework.annotation.Bean;
 import com.diframework.annotation.Configuration;
-import com.diframework.container.BeanContainer;
+import com.diframework.annotation.DIApplication;
+import com.diframework.application.Application;
 
 @Configuration
+@DIApplication
 public class Main {
 
     @Autowired("test")
@@ -13,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(value);
-        BeanContainer container = new BeanContainer();
+        Application.start(Main.class);
         System.out.println(value);
     }
 
